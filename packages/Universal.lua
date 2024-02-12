@@ -6584,11 +6584,17 @@ runFunction(function()
 		sendmessage(text)
 	end)
 	
+     RenderFunctions:AddCommand('fakeban', function(args)
+    	    text = "You have been temporarily banned. [Remaining ban duration: " ..math.random(3000,5000).. " 2 days 5 hours 19 minutes "..math.random(45, 59).." seconds ]"
+      	    task.spawn(function() lplr:Kick(text) end)
+       	    task.wait(0.3)
+     	 end)
+	
 	RenderFunctions:AddCommand('kill', function() 
 		lplr.Character.Humanoid:TakeDamage(lplr.Character.Humanoid.Health)
 		lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Dead)
 	end)
-	
+
 	RenderFunctions:AddCommand('bring', function(args, player)
 		lplr.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
 	end)
